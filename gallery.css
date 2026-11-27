@@ -1,0 +1,1128 @@
+
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ink: #fff4f8;
+    --muted: #eacbd7;
+    --pink: #f2a7bf;
+    --cream: #6f0c3d;
+    --sage: #ffe7a3;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: "DM Sans", sans-serif;
+    background: #4f0329;
+}
+
+/* ==========================================
+   PAGE BACKGROUND
+========================================== */
+
+.page-shell {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0 4.2%;
+
+    background:
+        radial-gradient(
+            ellipse at 7% 8%,
+            rgba(214,75,135,.30),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 91% 78%,
+            rgba(255,220,234,.10),
+            transparent 42%
+        ),
+        linear-gradient(
+            112deg,
+            #4f0329 0%,
+            #6f0c3d 48%,
+            #4d0327 100%
+        );
+}
+
+/* ==========================================
+   DECORATIONS
+========================================== */
+
+.grid-decoration {
+    position: absolute;
+    z-index: -1;
+    top: 105px;
+    left: 0;
+    width: 245px;
+    height: 330px;
+    opacity: .25;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.12) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.12) 1px,
+            transparent 1px
+        );
+
+    background-size: 27px 27px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.orbit {
+    position: absolute;
+    z-index: -1;
+    width: 70vw;
+    height: 210px;
+    border: 1.5px solid rgba(255,255,255,.8);
+    border-radius: 50%;
+    transform: rotate(-10deg);
+    pointer-events: none;
+}
+
+.orbit-one {
+    top: 48%;
+    left: 25%;
+}
+
+.orbit-two {
+    top: 51%;
+    left: 22%;
+    width: 74vw;
+    height: 185px;
+    border-color: rgba(255,255,255,.15);
+}
+
+.spark,
+.plus {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.spark {
+    color: rgba(255,255,255,.9);
+    text-shadow: 0 2px 5px rgba(0,0,0,.12);
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+.spark-one {
+    top: 24%;
+    left: 3%;
+    font-size: 38px;
+}
+
+.spark-two {
+    top: 57%;
+    right: 5%;
+    font-size: 45px;
+    animation-delay: 1s;
+}
+
+.spark-three {
+    bottom: 12%;
+    left: 16%;
+    font-size: 28px;
+    animation-delay: 1.7s;
+}
+
+.plus {
+    color: var(--ink);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.plus-one {
+    top: 18%;
+    left: 5%;
+}
+
+.plus-two {
+    bottom: 20%;
+    right: 7%;
+}
+
+.chrome-star {
+    position: absolute;
+    top: 18%;
+    right: 8%;
+    font-size: 65px;
+    color: #f2a7bf;
+
+    text-shadow:
+        2px 2px 2px #a94c70,
+        -2px -2px 3px white;
+
+    animation: rotateStar 12s linear infinite;
+    pointer-events: none;
+}
+
+.y2k-cross {
+    position: absolute;
+    top: 53%;
+    left: 4%;
+    font-size: 34px;
+    color: var(--pink);
+    animation: float 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.mini-star {
+    position: absolute;
+    bottom: 25%;
+    right: 10%;
+    color: var(--pink);
+    font-size: 27px;
+    animation: float 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.topbar {
+    position: relative;
+    z-index: 5;
+    min-height: 145px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    padding-top: 42px;
+}
+
+.clock-wrap {
+    position: relative;
+    justify-self: start;
+    padding-top: 16px;
+}
+
+.clock-slash {
+    position: absolute;
+    top: -7px;
+    left: 0;
+    font-size: 20px;
+    transform: rotate(-15deg);
+}
+
+.clock-pill {
+    min-width: 153px;
+    padding: 8px 17px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 30px;
+    background: rgba(255,255,255,.10);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(20px, 2.3vw, 43px);
+    padding-top: 15px;
+    white-space: nowrap;
+}
+
+.navigation a {
+    position: relative;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    padding-bottom: 9px;
+    transition: color .3s ease;
+}
+
+.navigation a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background: var(--pink);
+    transition: width .3s ease;
+}
+
+.navigation a:hover,
+.navigation a.active {
+    color: var(--pink);
+}
+
+.navigation a:hover::after,
+.navigation a.active::after {
+    width: 100%;
+}
+
+.top-plus {
+    justify-self: end;
+    padding-top: 8px;
+    color: var(--ink);
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* ==========================================
+   MAIN
+========================================== */
+
+.gallery-main {
+    width: min(1250px, 100%);
+    margin: 25px auto 100px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================
+   INTRO
+========================================== */
+
+.gallery-intro {
+    text-align: center;
+    margin-bottom: 90px;
+    animation: fadeUp 1s ease both;
+}
+
+.eyebrow {
+    color: var(--pink);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.gallery-intro h1 {
+    margin-top: 7px;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(65px, 8vw, 110px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.gallery-intro h1 span {
+    color: var(--pink);
+}
+
+.intro-copy {
+    max-width: 650px;
+    margin: 18px auto 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.intro-divider {
+    width: 55px;
+    height: 3px;
+    background: var(--pink);
+    margin: 25px auto 0;
+}
+
+.gallery-tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.gallery-tags span:nth-child(even) {
+    color: var(--pink);
+}
+
+/* ==========================================
+   SECTION HEADINGS
+========================================== */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    margin-top: 8px;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(42px, 5vw, 65px);
+    line-height: 1;
+}
+
+.section-heading h2 span {
+    color: var(--pink);
+}
+
+.section-counter {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+/* ==========================================
+   FEATURED VIDEO
+========================================== */
+
+.featured-video-section {
+    margin-bottom: 100px;
+}
+
+.featured-video {
+    max-width: 950px;
+    margin: auto;
+    animation: fadeUp 1s ease .2s both;
+}
+
+.featured-video-frame {
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.10);
+    box-shadow: 0 20px 40px rgba(0,0,0,.18);
+}
+
+.featured-video-frame video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #280016;
+}
+
+.video-label {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 15px;
+    background: rgba(30,0,17,.85);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    backdrop-filter: blur(8px);
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f2a7bf;
+    box-shadow: 0 0 10px #f2a7bf;
+    animation: pulse 1.5s infinite;
+}
+
+.video-corner {
+    position: absolute;
+    top: 23px;
+    right: 23px;
+    color: white;
+    font-family: "Oswald", sans-serif;
+    font-size: 30px;
+    text-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+
+.featured-video-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 5px;
+    border-bottom: 1px solid rgba(255,255,255,.20);
+}
+
+.story-label {
+    color: var(--pink);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.featured-video-caption h3 {
+    margin-top: 7px;
+    font-family: "Oswald", sans-serif;
+    font-size: 32px;
+}
+
+.caption-symbol {
+    color: var(--pink);
+    font-size: 35px;
+    animation: sparkle 3s infinite;
+}
+
+/* ==========================================
+   VIDEO 02 RIGHT TOP - LANDSCAPE
+   VIDEO 03 RIGHT BOTTOM - LANDSCAPE
+========================================== */
+
+.video-section {
+    margin-bottom: 110px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-rows: auto auto;
+    gap: 25px;
+    align-items: stretch;
+}
+
+/* VIDEO CARD */
+
+.video-card {
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: rgba(255,255,255,.08);
+    transition: transform .4s ease, box-shadow .4s ease;
+    animation: fadeUp 1s ease both;
+}
+
+.video-card:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.video-card:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 30px rgba(0,0,0,.18);
+}
+
+/* VIDEO 01 - LEFT */
+
+.video-card:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+.video-card:nth-child(1) .video-frame {
+    aspect-ratio: 9 / 16;
+}
+
+/* VIDEO 02 - RIGHT TOP */
+
+.video-card:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.video-card:nth-child(2) .video-frame {
+    aspect-ratio: 16 / 9;
+}
+
+/* VIDEO 03 - RIGHT BOTTOM */
+
+.video-card:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.video-card:nth-child(3) .video-frame {
+    aspect-ratio: 16 / 9;
+}
+
+/* VIDEO FRAME */
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #280016;
+}
+
+.video-frame video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.video-card:hover .video-frame video {
+    transform: scale(1.03);
+}
+
+/* VIDEO INDEX */
+
+.video-index {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 7px 11px;
+    background: rgba(30,0,17,.85);
+    color: white;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    pointer-events: none;
+}
+
+/* VIDEO INFORMATION */
+
+.video-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 8px 10px;
+}
+
+.video-info h3 {
+    font-family: "Oswald", sans-serif;
+    font-size: 23px;
+/* ==========================================
+   VIDEO COLLECTION
+   VIDEO 01 LEFT - PORTRAIT
+
+/* ==========================================
+   VIDEO COLLECTION
+   VIDEO 01 LEFT - PORTRAIT
+   VIDEO 02 RIGHT TOP - LANDSCAPE
+   VIDEO 03 RIGHT BOTTOM - LANDSCAPE
+========================================== */
+
+.video-section {
+    margin-bottom: 110px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-rows: auto auto;
+    gap: 25px;
+    align-items: stretch;
+}
+
+/* VIDEO CARD */
+
+.video-card {
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: rgba(255,255,255,.08);
+    transition: transform .4s ease, box-shadow .4s ease;
+    animation: fadeUp 1s ease both;
+}
+
+.video-card:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.video-card:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 30px rgba(0,0,0,.18);
+}
+
+/* VIDEO 01 - LEFT PORTRAIT */
+
+.video-card:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+.video-card:nth-child(1) .video-frame {
+    aspect-ratio: 9 / 16;
+}
+
+/* VIDEO 02 - RIGHT TOP LANDSCAPE */
+
+.video-card:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.video-card:nth-child(2) .video-frame {
+    aspect-ratio: 16 / 9;
+}
+
+/* VIDEO 03 - RIGHT BOTTOM LANDSCAPE */
+
+.video-card:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.video-card:nth-child(3) .video-frame {
+    aspect-ratio: 16 / 9;
+}
+
+/* VIDEO FRAME */
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #280016;
+}
+
+.video-frame video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+}
+
+.video-card:hover .video-frame video {
+    transform: scale(1.03);
+}
+
+/* VIDEO INDEX */
+
+.video-index {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 7px 11px;
+    background: rgba(30,0,17,.85);
+    color: white;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    pointer-events: none;
+}
+
+/* VIDEO INFORMATION */
+
+.video-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 8px 10px;
+}
+
+.video-info h3 {
+    font-family: "Oswald", sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.video-info p {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.video-info > span {
+    color: var(--pink);
+    font-size: 25px;
+}
+
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.video-info > span {
+    color: var(--pink);
+    font-size: 25px;
+}
+
+/* ==========================================
+   PHOTO COLLECTION
+========================================== */
+
+.photo-section {
+    margin-bottom: 100px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 260px;
+    gap: 20px;
+}
+
+.photo-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.20);
+    background: var(--cream);
+}
+
+.photo-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .7s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.08);
+}
+
+.photo-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 25px;
+    color: white;
+
+    background: linear-gradient(
+        to top,
+        rgba(30,0,17,.90),
+        transparent 65%
+    );
+
+    opacity: .9;
+    transition: opacity .4s ease;
+}
+
+.photo-card:hover .photo-overlay {
+    opacity: 1;
+}
+
+.photo-overlay span {
+    color: var(--pink);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.photo-overlay h3 {
+    margin-top: 7px;
+    font-family: "Oswald", sans-serif;
+    font-size: 25px;
+}
+
+/* ==========================================
+   ENDING
+========================================== */
+
+.gallery-ending {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    text-align: center;
+    padding: 45px 20px;
+
+    border-top: 1px solid rgba(255,255,255,.20);
+    border-bottom: 1px solid rgba(255,255,255,.20);
+}
+
+.gallery-ending p {
+    color: var(--pink);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.gallery-ending h2 {
+    max-width: 650px;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(30px, 4vw, 48px);
+    text-transform: uppercase;
+}
+
+.ending-star {
+    color: var(--pink);
+    font-size: 28px;
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.footer {
+    position: relative;
+    z-index: 2;
+    min-height: 75px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 12px;
+}
+
+.footer p {
+    color: #fff4f8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .7px;
+}
+
+.footer-symbol {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -5px;
+    color: #fff4f8;
+}
+
+.social-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 23px;
+}
+
+.social-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+    transition: color .3s ease, transform .3s ease;
+}
+
+.social-links a:hover {
+    color: var(--pink);
+    transform: translateY(-3px);
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: .5;
+        transform: scale(.8) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(20deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes rotateStar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .4;
+        transform: scale(.75);
+    }
+}
+
+/* ==========================================
+   TABLET - MAX WIDTH 900PX
+========================================== */
+
+@media (max-width: 900px) {
+
+    .page-shell {
+        padding: 0 5%;
+    }
+
+    .topbar {
+        min-height: auto;
+        grid-template-columns: 1fr auto;
+        row-gap: 22px;
+        padding-top: 25px;
+    }
+
+    .navigation {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        flex-wrap: wrap;
+        gap: 15px 23px;
+        padding: 0 0 25px;
+    }
+
+    .top-plus {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    /* Keep video layout on tablet */
+
+    .video-grid {
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 18px;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ==========================================
+   MOBILE - MAX WIDTH 560PX
+========================================== */
+
+@media (max-width: 560px) {
+
+    .clock-pill {
+        min-width: 130px;
+        font-size: 11px;
+    }
+
+    .navigation a {
+        font-size: 10px;
+        letter-spacing: .7px;
+    }
+
+    .gallery-intro h1 {
+        font-size: 60px;
+    }
+
+    .intro-copy {
+        font-size: 12px;
+    }
+
+    .gallery-tags {
+        gap: 9px;
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .section-heading {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .section-counter {
+        font-size: 9px;
+    }
+
+    .featured-video-frame {
+        padding: 6px;
+    }
+
+    .video-label {
+        bottom: 15px;
+        left: 15px;
+        padding: 8px 10px;
+        font-size: 8px;
+    }
+
+    /* MOBILE VIDEO COLLECTION */
+
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .video-card:nth-child(1),
+    .video-card:nth-child(2),
+    .video-card:nth-child(3) {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .video-card:nth-child(1) .video-frame {
+        aspect-ratio: 9 / 16;
+    }
+
+    .video-card:nth-child(2) .video-frame,
+    .video-card:nth-child(3) .video-frame {
+        aspect-ratio: 16 / 9;
+    }
+
+    /* PHOTO COLLECTION */
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 300px;
+    }
+
+    .photo-large {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .gallery-ending h2 {
+        font-size: 30px;
+    }
+
+    /* FOOTER */
+
+    .footer {
+        grid-template-columns: 1fr auto;
+        padding: 25px 0;
+    }
+
+    .footer p {
+        font-size: 9px;
+    }
+
+    .footer-symbol {
+        display: none;
+    }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

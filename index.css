@@ -1,0 +1,1013 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+/* =====================================
+   1. GLOBAL SETTINGS
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+
+    background:
+        radial-gradient(
+            ellipse at 8% 10%,
+            rgba(214, 75, 135, 0.30),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 95% 85%,
+            rgba(255, 220, 234, 0.10),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #4f0329 0%,
+            #6f0c3d 48%,
+            #4d0327 100%
+        );
+
+    color: #fff4f8;
+
+    min-height: 100vh;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 35px 65px;
+
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* =====================================
+   2. BACKGROUND GRID
+===================================== */
+
+.bg-grid {
+    position: absolute;
+
+    top: 95px;
+    left: 0;
+
+    width: 310px;
+    height: 350px;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.12) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.12) 1px,
+            transparent 1px
+        );
+
+    background-size: 25px 25px;
+
+    mask-image: linear-gradient(
+        to right,
+        black,
+        transparent
+    );
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* BACKGROUND RINGS */
+
+body::after {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    border-radius: 50%;
+
+    right: -300px;
+    bottom: -260px;
+
+    box-shadow:
+        0 0 0 20px rgba(255,255,255,0.04),
+        0 0 0 45px rgba(255,255,255,0.04),
+        0 0 0 70px rgba(255,255,255,0.04);
+
+    pointer-events: none;
+}
+
+
+/* =====================================
+   3. HEADER / NAVIGATION
+===================================== */
+
+header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+    flex-shrink: 0;
+
+    position: relative;
+    z-index: 10;
+}
+
+
+/* LIVE CLOCK */
+
+.clock-display {
+    position: absolute;
+
+    top: 28px;
+    left: 0;
+
+    min-width: 162px;
+
+    text-align: center;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    color: #fff2f6;
+
+    background: rgba(255,255,255,0.10);
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    padding: 9px 17px;
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+
+/* NAVIGATION */
+
+nav {
+    position: absolute;
+
+    top: 28px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 32px;
+
+    white-space: nowrap;
+}
+
+
+/* NAV LINKS */
+
+nav a {
+    text-decoration: none;
+
+    color: #fff2f6;
+
+    font-weight: 700;
+    font-size: 0.85rem;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    transition: all 0.3s ease;
+
+    position: relative;
+}
+
+
+/* ACTIVE UNDERLINE */
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -9px;
+    left: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: #f2a7bf;
+
+    transition: width 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: #f2a7bf;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+
+/* HEADER PLUS */
+
+.header-star {
+    position: absolute;
+
+    right: 0;
+    top: 23px;
+
+    font-size: 23px;
+    font-weight: 600;
+
+    color: #fff4f8;
+}
+
+
+/* =====================================
+   4. MAIN HERO SECTION
+===================================== */
+
+.hero-section {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    flex: 1;
+    min-height: 0;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+.hero-center {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =====================================
+   5. DECORATIVE GLOBE
+===================================== */
+
+.hero-section::before {
+    content: "";
+
+    position: absolute;
+
+    top: 3%;
+    left: -65px;
+
+    width: 190px;
+    height: 160px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 48%,
+            rgba(255,255,255,0.28) 49%,
+            rgba(255,255,255,0.28) 50%,
+            transparent 51%
+        ),
+        linear-gradient(
+            0deg,
+            transparent 48%,
+            rgba(255,255,255,0.28) 49%,
+            rgba(255,255,255,0.28) 50%,
+            transparent 51%
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 22px,
+            rgba(255,255,255,0.18) 23px 24px,
+            transparent 25px 40px
+        );
+
+    transform: rotate(-8deg);
+
+    opacity: 0.7;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =====================================
+   6. DECORATIVE STARS
+===================================== */
+
+.hero-section::after {
+    content: "✦";
+
+    position: absolute;
+
+    top: 18%;
+    right: 8%;
+
+    font-size: 75px;
+
+    color: rgba(255,255,255,0.9);
+
+    text-shadow:
+        2px 3px 5px rgba(30,40,30,0.35);
+
+    animation: sparkle 3s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+/* FLOATING STARS */
+
+.sparkle {
+    position: absolute;
+
+    color: #ffe7a3;
+
+    text-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+
+    z-index: 3;
+
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+.star-1 {
+    top: 22%;
+    left: 10%;
+    font-size: 35px;
+}
+
+.star-2 {
+    top: 58%;
+    left: 22%;
+    font-size: 22px;
+    animation-delay: 1s;
+}
+
+.star-3 {
+    top: 25%;
+    right: 14%;
+    font-size: 42px;
+    animation-delay: 1.5s;
+}
+
+.star-4 {
+    bottom: 18%;
+    right: 25%;
+    font-size: 38px;
+    animation-delay: 0.5s;
+}
+
+
+/* =====================================
+   7. NAME ABOVE PORTFOLIO
+===================================== */
+
+.hero-name-top {
+    position: absolute;
+
+    top: 15%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 1.3rem;
+
+    font-weight: 800;
+
+    letter-spacing: 6px;
+
+    color: #f2a7bf;
+
+    text-transform: uppercase;
+
+    z-index: 4;
+
+    white-space: nowrap;
+
+    animation: fadeIn 1s ease forwards;
+}
+
+
+/* =====================================
+   8. PORTFOLIO TITLE
+===================================== */
+
+.title-container {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 90vw;
+
+    max-width: 1500px;
+}
+
+
+/* MAIN TITLE */
+
+.title-big {
+    font-family: 'Bebas Neue', sans-serif;
+
+    font-size: 22vw;
+
+    letter-spacing: 10px;
+
+    color: #fff4f8;
+
+    text-transform: uppercase;
+
+    line-height: 0.8;
+
+    z-index: 1;
+
+    white-space: nowrap;
+
+    user-select: none;
+
+    display: inline-block;
+
+    animation:
+        writeText 2.5s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+
+/* =====================================
+   9. SILVER METALLIC ORBIT
+===================================== */
+
+.title-container::before {
+    content: "";
+
+    position: absolute;
+
+    width: 108%;
+    height: 48%;
+
+    border: 3px solid rgba(255,255,255,0.8);
+
+    border-top-color: #a9a0a7;
+    border-bottom-color: #ffffff;
+
+    border-radius: 50%;
+
+    transform: rotate(-10deg);
+
+    z-index: 2;
+
+    box-shadow:
+        0 2px 3px rgba(0,0,0,0.25),
+        inset 0 2px 3px rgba(255,255,255,0.8);
+
+    pointer-events: none;
+
+    animation: orbitAppear 2s ease forwards;
+}
+
+
+/* =====================================
+   10. Y2K DECORATIVE ELEMENTS
+===================================== */
+
+.deco-star {
+    position: absolute;
+
+    color: rgba(255,255,255,0.95);
+
+    text-shadow:
+        1px 2px 5px rgba(0,0,0,0.4);
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+.star-one {
+    top: 28%;
+    left: 3%;
+    font-size: 45px;
+}
+
+.star-two {
+    bottom: 20%;
+    left: 15%;
+    font-size: 32px;
+    animation-delay: 1s;
+}
+
+.star-three {
+    top: 35%;
+    right: 8%;
+    font-size: 35px;
+    animation-delay: 1.5s;
+}
+
+.star-four {
+    bottom: 12%;
+    right: 25%;
+    font-size: 48px;
+    animation-delay: 0.5s;
+}
+
+
+/* =====================================
+   11. CHECKERBOARD DECORATIONS
+===================================== */
+
+.checker-decoration {
+    position: absolute;
+
+    font-size: 25px;
+
+    letter-spacing: -5px;
+
+    color: rgba(255,244,248,0.65);
+
+    transform: rotate(15deg);
+
+    pointer-events: none;
+}
+
+.checker-left {
+    bottom: 25%;
+    left: 0;
+}
+
+.checker-right {
+    bottom: 8%;
+    right: 18%;
+}
+
+
+/* SMALL SIDE STARS */
+
+.pixel-checker {
+    position: absolute;
+
+    color: #fff4f8;
+
+    font-size: 17px;
+
+    z-index: 2;
+}
+
+.checkered-left {
+    top: 38%;
+    left: 0;
+}
+
+.checkered-right {
+    bottom: 24%;
+    right: 20%;
+}
+
+
+/* =====================================
+   12. BARCODE
+===================================== */
+
+.barcode-decoration {
+    position: absolute;
+
+    right: 0;
+    top: 42%;
+
+    width: 35px;
+    height: 145px;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.65) 0px,
+        rgba(255,255,255,0.65) 2px,
+        transparent 2px,
+        transparent 5px
+    );
+
+    opacity: 0.6;
+}
+
+
+/* BARCODE TAG */
+
+.barcode-tag {
+    position: absolute;
+
+    right: -5%;
+
+    top: 42%;
+
+    width: 35px;
+    height: 145px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    z-index: 3;
+
+    opacity: 0.6;
+}
+
+.barcode-tag span {
+    display: block;
+
+    width: 100%;
+    height: 2px;
+
+    background: #fff4f8;
+}
+
+
+/* =====================================
+   13. SIDE DECORATION
+===================================== */
+
+.side-stars {
+    position: absolute;
+
+    top: 38%;
+    left: 0;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    color: #fff4f8;
+}
+
+
+/* =====================================
+   14. FOOTER
+===================================== */
+
+footer {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 35px;
+
+    flex-shrink: 0;
+
+    z-index: 10;
+
+    position: relative;
+}
+
+
+/* COPYRIGHT */
+
+.copyright-text {
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    color: rgba(255,240,246,0.84);
+}
+
+
+/* FOOTER PLUS */
+
+.footer-star {
+    position: absolute;
+
+    left: 60%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    font-size: 25px;
+
+    font-weight: 600;
+
+    color: #fff4f8;
+}
+
+
+/* SOCIAL MEDIA */
+
+.social-icons {
+    display: flex;
+
+    gap: 20px;
+}
+
+.social-icons a {
+    color: #fff4f8;
+
+    font-size: 1.3rem;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #f2a7bf;
+
+    transform: translateY(-3px) scale(1.15);
+}
+
+
+/* =====================================
+   15. ANIMATIONS
+===================================== */
+
+@keyframes writeText {
+
+    0% {
+        clip-path: inset(0 100% 0 0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadeIn {
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%,-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%,0);
+    }
+}
+
+
+@keyframes sparkle {
+
+    0%, 100% {
+        opacity: 0.55;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+
+@keyframes orbitAppear {
+
+    from {
+        opacity: 0;
+        transform: rotate(-20deg) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(-10deg) scale(1);
+    }
+}
+
+
+/* =====================================
+   16. TABLET RESPONSIVE
+===================================== */
+
+@media (max-width: 1100px) {
+
+    body {
+        padding: 30px 35px;
+    }
+
+    nav {
+        gap: 17px;
+    }
+
+    nav a {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+
+    .clock-display {
+        min-width: 130px;
+        font-size: 0.7rem;
+    }
+
+    .title-big {
+        font-size: 20vw;
+        letter-spacing: 5px;
+    }
+
+    .hero-name-top {
+        font-size: 1rem;
+        letter-spacing: 4px;
+    }
+
+    .footer-star {
+        display: none;
+    }
+}
+
+
+/* =====================================
+   17. MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 20px;
+
+        min-height: 600px;
+        height: 100vh;
+    }
+
+    header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        height: 110px;
+    }
+
+    .clock-display {
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        font-size: 0.65rem;
+
+        min-width: 130px;
+
+        padding: 8px 12px;
+    }
+
+    nav {
+        position: absolute;
+
+        top: 55px;
+        left: 0;
+
+        transform: none;
+
+        justify-content: flex-start;
+
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 0.58rem;
+
+        letter-spacing: 0.5px;
+    }
+
+    .header-star {
+        top: 0;
+        right: 0;
+    }
+
+    .hero-name-top {
+        top: 30%;
+
+        font-size: 0.75rem;
+
+        letter-spacing: 3px;
+    }
+
+    .title-big {
+        font-size: 17vw;
+
+        letter-spacing: 1px;
+    }
+
+    .title-container {
+        width: 95vw;
+    }
+
+    .title-container::before {
+        height: 65%;
+    }
+
+    .hero-section::before {
+        width: 110px;
+        height: 90px;
+    }
+
+    .hero-section::after {
+        font-size: 45px;
+    }
+
+    .barcode-decoration,
+    .barcode-tag,
+    .checker-right,
+    .side-stars {
+        display: none;
+    }
+
+    .copyright-text {
+        font-size: 0.52rem;
+    }
+
+    .social-icons {
+        gap: 12px;
+    }
+
+    .social-icons a {
+        font-size: 1.1rem;
+    }
+
+    .footer-star {
+        display: none;
+    }
+
+}
+
+
+/* =====================================
+   18. REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
