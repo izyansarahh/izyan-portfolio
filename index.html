@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IZYAN MAISARAH - Portfolio</title>
+
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles/index.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND DECORATIONS -->
+    <div class="bg-grid"></div>
+    <div class="swoop swoop-top-left"></div>
+    <div class="swoop swoop-bottom-right"></div>
+    <div class="wireframe-globe"></div>
+
+    <!-- HEADER -->
+    <header>
+
+        <!-- LIVE CLOCK -->
+        <div class="clock-display" id="liveClock">
+            01:45:46 PM
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav>
+            <a href="index.html" class="active">HOME</a>
+            <a href="biodata.html">BIODATA</a>
+            <a href="education.html">EDUCATION</a>
+            <a href="experience.html">EXPERIENCE</a>
+            <a href="family.html">FAMILY</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+
+        <!-- PLUS ICON -->
+        <span class="header-star">
+            <i class="fa-solid fa-plus"></i>
+        </span>
+
+    </header>
+
+
+    <!-- MAIN HERO SECTION -->
+    <main class="hero-section">
+
+        <!-- FLOATING STARS -->
+        <div class="sparkle star-1">✦</div>
+        <div class="sparkle star-2">✦</div>
+        <div class="sparkle star-3">✦</div>
+        <div class="sparkle star-4">✦</div>
+
+        <!-- CHECKER DECORATIONS -->
+        <div class="pixel-checker checkered-left">▦ ▦ ▦</div>
+        <div class="pixel-checker checkered-right">▦ ▦ ▦</div>
+
+        <!-- LEFT STAR -->
+        <div class="side-stars">✦✦✦✦✦</div>
+
+        <!-- MAIN CONTENT -->
+        <div class="hero-center">
+
+            <!-- TOP NAME -->
+            <div class="hero-name-top">
+                IZYAN MAISARAH'S
+            </div>
+
+            <!-- TITLE -->
+            <div class="title-container">
+
+                <!-- ORBIT RING -->
+                <div class="orbit-ellipse"></div>
+
+                <h1 class="title-big">
+                    PORTFOLIO
+                </h1>
+
+                <!-- BARCODE -->
+                <div class="barcode-tag">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+
+            <!-- DECORATIVE STARS -->
+            <span class="deco-star star-one">✦</span>
+            <span class="deco-star star-two">✦</span>
+            <span class="deco-star star-three">✦</span>
+            <span class="deco-star star-four">✦</span>
+
+            <!-- CHECKER DECORATION -->
+            <div class="checker-decoration checker-left">
+                ▦ ▦ ▦
+            </div>
+
+            <div class="checker-decoration checker-right">
+                ▦ ▦ ▦
+            </div>
+
+            <!-- SMALL BARCODE -->
+            <div class="barcode-decoration"></div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="copyright-text">
+            © 2026 IZYAN MAISARAH. ALL RIGHTS RESERVED.
+        </div>
+
+        <div class="footer-star">
+            <i class="fa-solid fa-plus"></i>
+        </div>
+
+        <div class="social-icons">
+
+            <a href="https://www.instagram.com/izyansarahh?avpt=MTg2OGhqZ3NoYnVuZw%3D%3D&utm_source=qr"
+               target="_blank"
+               rel="noopener noreferrer"
+               title="Instagram">
+
+                <i class="fa-brands fa-instagram"></i>
+
+            </a>
+
+            <a href="https://www.tiktok.com/@cd4no?_r=1&_t=ZS-9B3ZEk3neZI"
+               target="_blank"
+               rel="noopener noreferrer"
+               title="TikTok">
+
+                <i class="fa-brands fa-tiktok"></i>
+
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- LIVE CLOCK SCRIPT -->
+    <script>
+
+        function updateClock() {
+
+            const now = new Date();
+
+            let hours = now.getHours();
+
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            const displayHours = hours % 12 || 12;
+
+            const formattedHours = String(displayHours).padStart(2, '0');
+
+            document.getElementById('liveClock').textContent =
+                `${formattedHours}:${minutes}:${seconds} ${ampm}`;
+
+        }
+
+        updateClock();
+
+        setInterval(updateClock, 1000);
+
+    </script>
+
+</body>
+</html>
